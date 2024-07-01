@@ -167,3 +167,49 @@ button {
     transform: rotate(360deg);
   }
 }
+
+@media (max-width: 1000px) {
+  .summary {
+    flex-direction: column;
+  }
+
+  .daterange {
+    grid-template-columns: 1fr;
+  }
+
+  .daterange *:last-child {
+    grid-row: 1;
+  }
+}
+
+@media (max-width: 700px) {
+  html {
+    --gap: 0.5rem;
+    --gap-s: 0.75rem;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .flex {
+    flex-direction: column;
+  }
+
+  .sidenav ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .sidenav li a {
+    font-size: 0.875rem;
+  }
+
+  .sale {
+    grid-template-columns: 1fr;
+  }
+
+  .sale div:last-child {
+    justify-self: start
+  }
+}
