@@ -1,6 +1,7 @@
 import Header from "./components/header";
 import SideNav from "./components/sidenav";
 import { DataContextProvider } from "./context/dataContext";
+import Sales from "./pages/sales";
 import Summary from "./pages/summary";
 
 function App() {
@@ -10,8 +11,9 @@ function App() {
         <SideNav />
         <main>
           <Header />
+          <Summary />
+          <Sales />
         </main>
-        <Summary />
       </section>
     </DataContextProvider>
   );

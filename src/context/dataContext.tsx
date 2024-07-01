@@ -8,7 +8,7 @@ import {
 } from "react";
 import useFetch from "../hooks/useFetch";
 
-interface IVenda {
+export interface IVenda {
   id: string;
   nome: string;
   preco: string;
@@ -24,8 +24,10 @@ interface IDataContext {
   error: string | null;
   start: string;
   final: string;
+  title: string;
   setStart: Dispatch<SetStateAction<string>>;
   setFinal: Dispatch<SetStateAction<string>>;
+  setTitle: Dispatch<SetStateAction<string>>;
 }
 
 const DataContext = createContext<IDataContext | null>(null);
@@ -49,6 +51,7 @@ const getDate = (n: number) => {
 export const DataContextProvider = ({ children }: PropsWithChildren) => {
   const [start, setStart] = useState(getDate(30));
   const [final, setFinal] = useState(getDate(0));
+  const [title, setTitle] = useState("Resumo");
 
   const { data, error, loading } = useFetch<IVenda[]>(
     `https://data.origamid.dev/vendas/?inicio=${start}&final=${final}`
@@ -62,6 +65,8 @@ export const DataContextProvider = ({ children }: PropsWithChildren) => {
     setStart,
     final,
     setFinal,
+    title,
+    setTitle,
   };
 
   return <DataContext.Provider value={values}>{children}</DataContext.Provider>;
