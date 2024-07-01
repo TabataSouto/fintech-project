@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import DateRange from "../dateRange";
 import Months from "../months";
 import { useData } from "../../context/dataContext";
+import { useLocation } from "react-router-dom";
 
 function Header() {
-  const { title } = useData();
+  const { title, setTitle } = useData();
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    if (pathname === "/") {
+      setTitle("Resumo");
+      document.title = "Fintech | Resumo";
+    } else if (pathname === "/vendas") {
+      document.title = "Fintech | Vendas";
+      setTitle("Vendas");
+    }
+  });
 
   return (
     <header className="mb">
