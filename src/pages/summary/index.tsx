@@ -1,5 +1,6 @@
 import React from "react";
 import { useData } from "../../context/dataContext";
+import Graphic from "../../components/graphic";
 
 function Summary() {
   const { data } = useData();
@@ -36,7 +37,9 @@ function Summary() {
           </span>
         </div>
       </div>
-      <div className="box mb">Gráficos</div>
+      <div className="box mb">
+        <Graphic data={data} />
+      </div>
     </section>
   );
 }
